@@ -5,21 +5,19 @@
 
 int main(int argc, char *argv[]) {
 	
-	char *pc;
+	char buffer[8];
 	int *pi;
 	double *pd;
 	
-	pc = (char*)10000;
-	pi = (int*)10000;
-	pd = (double*)10000;
+	pd = (double*)buffer;
+	*pd=3.14;
+	printf("%f\n", *(double*)buffer);
 	
-	printf("before plus: pc = %d, pi = %d, pd = %d\n", pc, pi, pd);
+	pi = (int*)buffer;
+	*pi=123;
+	*(pi + 1) = 456;
 	
-	pc++;
-	pi++;
-	pd++;
-	
-	printf("after plus: pc = %d, pi = %d, pd = %d\n", pc, pi, pd);
+	printf("%d %d\n", *(int*)buffer, *((int*)buffer + 1));
 
 	return 0;
 }
